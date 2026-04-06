@@ -1,0 +1,31 @@
+from burp import IBurpExtender, IHttpListener
+import re
+
+class BurpExtender(IBurpExtender, IHttpListener):
+    
+    def registerExtenderCallbacks(self, callbacks):
+        self._callbacks = callbacks
+        self._helpers = callbacks.getHelpers()
+        callbacks.setExtensionName("BugForge Flag Catcher")
+        callbacks.registerHttpListener(self)
+        print("[Flag Catcher] Loaded - watching for bug{...} flags")
+    
+    def processHttpMessage(self, toolFlag, messageIsRequest, messageInfo):
+        if messageIsRequest:
+            return
+        
+        try:
+            response = messageInfo.getResponse()
+            if not response:
+                return
+            
+            body = self._helpers.bytesToString(response)
+            flags = re.findall(r'bug\{[^}]+\}', body)
+            
+            if flags:
+                messageInfo.setHighlight("red")
+                messageInfo.setComment("FLAG: " + ", ".join(flags))
+                print("[FLAG FOUND] " + ", ".join(flags))
+        
+        except Exception as e:
+            print("[Flag Catcher] Error: " + str(e))
