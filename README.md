@@ -33,7 +33,7 @@ Once loaded, the extension runs automatically in the background. Any HTTP respon
 
 - Highlighted red in Burp's HTTP history
 - Annotated with a comment showing the flag value
-- Printed to the **Extender output** tab
+- Printed to the **Extension output** tab
 
 ## Flag Format
 
