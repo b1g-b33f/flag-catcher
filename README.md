@@ -18,11 +18,11 @@ A Burp Suite extension that automatically detects and highlights CTF-style flags
 ## Installation
 
 1. Download the [Jython standalone JAR](https://www.jython.org/download) and configure it in Burp:
-   - Go to **Extender > Options > Python Environment**
+   - Go to **Extensions > Options > Python Environment**
    - Set the path to your `jython-standalone-x.x.x.jar`
 
 2. Load the extension:
-   - Go to **Extender > Extensions > Add**
+   - Go to **Extensions > Add**
    - Set **Extension type** to `Python`
    - Select `flag_catcher.py`
    - Click **Next**
