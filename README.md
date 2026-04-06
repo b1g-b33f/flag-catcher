@@ -8,7 +8,7 @@ A Burp Suite extension that automatically detects and highlights Bugforge-style 
 - Detects flags matching the pattern `bug{...}`
 - Highlights matching requests **red** in the Proxy/HTTP history
 - Adds a comment to the request with the captured flag(s)
-- Prints found flags to the Burp extender output console
+- Prints found flags to the Burp extension output console
 
 ## Requirements
 
